@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewtonSolver", "NewtonSolve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquationParser", "EquationParser\EquationParser.csproj", "{77FFAA4B-7222-4044-884E-4A9B26173721}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNewtonSolver", "TestNewtonSolver\TestNewtonSolver.csproj", "{3ECF53BB-65B4-46C0-A7B5-C1FF85035298}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEquationParser", "TestEquationParser\TestEquationParser.csproj", "{82C2A64A-B0B2-49D7-B3D0-C14422C0108F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -25,5 +29,13 @@ Global
 		{77FFAA4B-7222-4044-884E-4A9B26173721}.Debug|x86.Build.0 = Debug|Any CPU
 		{77FFAA4B-7222-4044-884E-4A9B26173721}.Release|x86.ActiveCfg = Release|Any CPU
 		{77FFAA4B-7222-4044-884E-4A9B26173721}.Release|x86.Build.0 = Release|Any CPU
+		{3ECF53BB-65B4-46C0-A7B5-C1FF85035298}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3ECF53BB-65B4-46C0-A7B5-C1FF85035298}.Debug|x86.Build.0 = Debug|Any CPU
+		{3ECF53BB-65B4-46C0-A7B5-C1FF85035298}.Release|x86.ActiveCfg = Release|Any CPU
+		{3ECF53BB-65B4-46C0-A7B5-C1FF85035298}.Release|x86.Build.0 = Release|Any CPU
+		{82C2A64A-B0B2-49D7-B3D0-C14422C0108F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{82C2A64A-B0B2-49D7-B3D0-C14422C0108F}.Debug|x86.Build.0 = Debug|Any CPU
+		{82C2A64A-B0B2-49D7-B3D0-C14422C0108F}.Release|x86.ActiveCfg = Release|Any CPU
+		{82C2A64A-B0B2-49D7-B3D0-C14422C0108F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

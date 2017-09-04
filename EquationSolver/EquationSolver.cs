@@ -1,6 +1,4 @@
 ﻿using System;
-using NewtonSolver;
-using EquationParser;
 
 namespace EquationSolver
 {
@@ -8,7 +6,8 @@ namespace EquationSolver
 	{
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			var outfunc = NewtonSolver.NewtonSolver.FiniteDifference(Math.Sin, 0.0000001);
+			Console.WriteLine(outfunc(Math.PI).ToString());
 		}
 	}
 }
