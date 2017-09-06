@@ -1,4 +1,5 @@
 ﻿using System;
+using static NewtonSolver.NewtonSolver;
 
 namespace EquationSolver
 {
@@ -6,8 +7,8 @@ namespace EquationSolver
 	{
 		public static void Main(string[] args)
 		{
-			var outfunc = NewtonSolver.NewtonSolver.FiniteDifference(Math.Sin, 0.0000001);
-			Console.WriteLine(outfunc(Math.PI).ToString());
+			var solution = NewtonSolve((x) => x * x * x + 5 * x * x - 17 * x + 7, 0.0);
+			Console.WriteLine(solution.ToString());
 		}
 	}
 }

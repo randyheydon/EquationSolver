@@ -23,5 +23,35 @@ namespace NewtonSolver
 		{
 			return FiniteDifference(function, 0.0001);
 		}
+
+		// Use Newton's method to find a root of a given function with a given derivative
+		// function (also known as a Jacobian) and a given starting guess.
+		// TODO Raise exception or return something else if it fails to converge.
+		public static double NewtonSolve(MathFunc function, MathFunc jacobian, double guess)
+		{
+			double x = guess;
+			// Limit iterations, since some cases will be unsolvable.
+			// TODO Make the iteration limit configurable.
+			for (int i = 0; i < 1000; i++)
+			{
+				// Check if we are sufficiently close to the solution yet.
+				// TODO Make permissible error configurable.
+				double y = function(x);
+				if (Math.Abs(y) < 1e-6)
+				{
+					return x;
+				}
+				// If it's not solved yet, apply one step Newton's method and check again.
+				x = x - y / jacobian(x);
+			}
+			// TODO If the iteration limit is reached, return or raise something meaningful.
+			return -1e99;
+		}
+
+		// If no Jacobian is given, use FiniteDifference to generate an approximation.
+		public static double NewtonSolve(MathFunc function, double guess)
+		{
+			return NewtonSolve(function, FiniteDifference(function), guess);
+		}
 	}
 }
