@@ -38,6 +38,16 @@ namespace TestNewtonSolver
 			Assert.That(IsClose(NewtonSolve((x) => x * x - x, 2.0), 1));
 			Assert.That(IsClose(NewtonSolve((x) => x * x - x, -1.0), 0));
 		}
-		// TODO Test convergence failure and zero derivatives.
+
+		[Test()]
+		public void TestNewtonSolveFailures()
+		{
+			// Equation with no real roots.
+			Assert.Throws(typeof(NewtonSolver.SolveFailureException),
+						  () => NewtonSolve((x) => x * x + 2, (x) => 2 * x, 1));
+			// Bad guess makes solution impossible.
+			Assert.Throws(typeof(NewtonSolver.SolveFailureException),
+						  () => NewtonSolve((x) => x * x - 2, (x) => 2 * x, 0));
+		}
 	}
 }

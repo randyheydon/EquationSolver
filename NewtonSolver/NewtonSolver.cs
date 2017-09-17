@@ -1,6 +1,11 @@
 ﻿using System;
 namespace NewtonSolver
 {
+	public class SolveFailureException : Exception
+	{
+		public SolveFailureException(string message) : base(message) { }
+	}
+
 	public static class NewtonSolver
 	{
 		// Everything here deals with univariate mathematical functions (i.e. functions that
@@ -20,26 +25,25 @@ namespace NewtonSolver
 
 		// Use Newton's method to find a root of a given function with a given derivative
 		// function (also known as a Jacobian) and a given starting guess.
-		// TODO Raise exception or return something else if it fails to converge.
-		public static double NewtonSolve(MathFunc function, MathFunc jacobian, double guess)
+		public static double NewtonSolve(MathFunc function, MathFunc jacobian, double guess,
+		                                 double maxerr = 1e-6, int maxiters = 1000)
 		{
 			double x = guess;
 			// Limit iterations, since some cases will be unsolvable.
-			// TODO Make the iteration limit configurable.
-			for (int i = 0; i < 1000; i++)
+			for (int i = 0; i < maxiters; i++)
 			{
 				// Check if we are sufficiently close to the solution yet.
-				// TODO Make permissible error configurable.
 				double y = function(x);
-				if (Math.Abs(y) < 1e-6)
+				if (Math.Abs(y) < maxerr)
 				{
 					return x;
 				}
 				// If it's not solved yet, apply one step Newton's method and check again.
 				x = x - y / jacobian(x);
 			}
-			// TODO If the iteration limit is reached, return or raise something meaningful.
-			return -1e99;
+			// If the iteration limit is reached without getting within the error limit,
+			// throw a custom exception.
+			throw new SolveFailureException("Could not find solution");
 		}
 
 		// If no Jacobian is given, use FiniteDifference to generate an approximation.
