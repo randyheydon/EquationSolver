@@ -13,15 +13,9 @@ namespace NewtonSolver
 		// Calculating analytic derivatives is a pain without a proper computer algebra
 		// system.  A numerical approximation with the finite difference method is much
 		// easier.
-		public static MathFunc FiniteDifference(MathFunc function, double epsilon)
+		public static MathFunc FiniteDifference(MathFunc function, double epsilon = 0.0001)
 		{
 			return (x) => (function(x + epsilon / 2.0) - function(x-epsilon/2.0)) / epsilon;
-		}
-
-		// If epsilon is unspecified, use default value.
-		public static MathFunc FiniteDifference(MathFunc function)
-		{
-			return FiniteDifference(function, 0.0001);
 		}
 
 		// Use Newton's method to find a root of a given function with a given derivative
